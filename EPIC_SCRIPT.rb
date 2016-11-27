@@ -12,7 +12,7 @@ for i in 0..(filea.length - 1)
             end
         elsif line.sub("print ", "").chars.first == '['
             if line.sub("print ", "").chars.last == ']'
-                # print every string in array on a different line
+                puts line.sub("print ", "").split(", ").join("\n") 
             else
                 puts "Error 1: print can only use a string or array"
             end
