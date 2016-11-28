@@ -1,4 +1,32 @@
-class EPIC_SCRIPT
+class ESFuctions
+	
+	def print(object)
+		if object.chars.first == '"'
+			if object.chars.last == '"'
+				puts object.gsub('\"', '"').gsub('"', "")
+			else
+				puts "Error 0001: print can only use a string or array"
+			end
+		elsif object.chars.first == '['
+			if object.chars.last == ']'
+				for a in 0..(object.split(", ").length)
+					if object.split(", ").at(a).chars.first == '"'
+						if object.split(", ").at(a).chars.last == '"'
+							puts object.split(", ").at(a).gsub('\"', '"').gsub('"', "")
+						end
+					end
+				end
+			else
+				puts "Error 0001: print can only use a string or array"
+			end
+		else
+			puts "Error 0001: print can only use a string or array"
+		end
+	end
+	
+end
+
+class EPICSCRIPT
 	
 	def initialize(filename)
 		@filename = filename
@@ -10,19 +38,7 @@ class EPIC_SCRIPT
 		for i in 0..(filea.length - 1)
 			line = filea.at(i)
 			if line.split.at(0) == "print"
-				if line.sub("print ", "").chars.first == '"'
-					if line.sub("print ", "").chars.last == '"'
-						puts line.sub("print ", "")
-					else
-						puts "Error 0001: print can only use a string or array"
-					end
-				elsif line.sub("print ", "").chars.first == '['
-					if line.sub("print ", "").chars.last == ']'
-						puts line.sub("print ", "").split(", ").join("\n") 
-					else
-						puts "Error 0001: print can only use a string or array"
-					end
-				end
+				ESFuctions.print(line.sub("print ", ""))
 			elsif line.split.at(0) == "cal"
 				expres = line.sub("cal ", "")
 				expresa = line.split(/[+\-*/]/)
