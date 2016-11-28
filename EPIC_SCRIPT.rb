@@ -1,6 +1,7 @@
 class ESFuctions
 	
 	def print(object)
+		# NOT TESTED
 		if object.chars.first == '"'
 			if object.chars.last == '"'
 				puts object.gsub('\"', '"').gsub('"', "")
@@ -24,6 +25,18 @@ class ESFuctions
 		end
 	end
 	
+	def cal(eq)
+		# NOT TESTED
+		expresa = eq.split(/[+\-*/]/)
+		expresb = eq.split(/[^+\-*/]/)
+		expresd = Array.new
+		for c in 0..(expresa.length - 1)
+			expresd.push(expresa.at(i) + " " + expresb.at(i) + " ")
+		end
+		# ONLY SPITS OUT THE EQUASHION, NOT THE AWNSER YET, MIGHT HAVE TO USE eval()
+		puts expresd.join("")
+	end
+	
 end
 
 class EPICSCRIPT
@@ -40,14 +53,7 @@ class EPICSCRIPT
 			if line.split.at(0) == "print"
 				ESFuctions.print(line.sub("print ", ""))
 			elsif line.split.at(0) == "cal"
-				expres = line.sub("cal ", "")
-				expresa = line.split(/[+\-*/]/)
-				expresb = line.split(/[^+\-*/]/)
-				expresd = Array.new
-				for c in 0..(expresa.length - 1)
-					expresd.push(expresa.at(i) + " " + expresb.at(i) + " ")
-				end
-				puts expresd.join("")
+				ESFuctions.cal(line.sub("cal ", ""))
 			end
 		end
 	end
