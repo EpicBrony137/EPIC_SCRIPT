@@ -7,7 +7,11 @@ def objid(thing)
 		if thing.chars.last == ']'
 			return "array"
 		end
-	elsif thing.chars.first == # regex to see if it starts with a-z or A-Z
+	elsif vars.has_key?(thing) == True
+		return "variable"
+	else 
+		return "error 0002: Varible not found or not an object"
+	end
 end
 
 class ESFuctions
