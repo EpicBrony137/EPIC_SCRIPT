@@ -1,6 +1,7 @@
 $vars = Hash.new
 
 def objid(thing)
+	# NOT TESTED
 	if thing.chars.first == '"'
 		if thing.chars.last == '"'
 			return "string"
@@ -12,7 +13,7 @@ def objid(thing)
 	elsif $vars.has_key?(thing) == True
 		return "variable"
 	else 
-		return "error 0002: Varible not found or not an object"
+		return "Error 0001: Varible not found or not an object"
 	end
 end
 
@@ -20,32 +21,39 @@ class ESFuctions
 	
 	def print(object)
 		# NOT TESTED
-		if object.chars.first == '"'
-			if object.chars.last == '"'
-				puts object.gsub('\"', '"').gsub('"', "")
-			else
-				puts "Error 0001: print can only use a string or array"
+		if objid(object) == "string"
+			puts object.gsub('\"', '"').gsub('"', "")
+		elsif objid(object) == "array"
+			for a in 0..(object.split(", ").length)
+				if object.split(", ").at(a).chars.first == '"'
+					if object.split(", ").at(a).chars.last == '"'
+						puts object.split(", ").at(a).gsub('\"', '"').gsub('"', "")
+					end
+				end
 			end
-		elsif object.chars.first == '['
-			if object.chars.last == ']'
-				for a in 0..(object.split(", ").length)
-					if object.split(", ").at(a).chars.first == '"'
-						if object.split(", ").at(a).chars.last == '"'
-							puts object.split(", ").at(a).gsub('\"', '"').gsub('"', "")
+		elsif objid(object) == "variable"
+			newobject = $vars[object]
+			if objid(newobject) == "string"
+				puts newobject.gsub('\"', '"').gsub('"', "")
+			elsif objid(newobject) == "array"
+				for a in 0..(newobject.split(", ").length)
+					if newobject.split(", ").at(a).chars.first == '"'
+						if newobject.split(", ").at(a).chars.last == '"'
+							puts newobject.split(", ").at(a).gsub('\"', '"').gsub('"', "")
 						end
 					end
 				end
-			else
-				puts "Error 0001: print can only use a string or array"
 			end
-		else
-			puts "Error 0001: print can only use a string or array"
 		end
 	end
 	
 	def var(var)
 		nameandobj = var.split(" = ")
-		$vars.store(nameandobj.at(0), nameandobj.at(1))
+		if objid(nameandobj.at(1)) == "variable"
+			$vars.store(nameandobj.at(0), $vars[nameandobj.at(1)])
+		else
+			$vars.store(nameandobj.at(0), nameandobj.at(1))
+		end
 	end
 	
 	def cal(eq)
