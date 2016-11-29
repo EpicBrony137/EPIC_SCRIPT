@@ -1,5 +1,7 @@
 class ESFuctions
 	
+	$vars = Hash.new
+	
 	def print(object)
 		# NOT TESTED
 		if object.chars.first == '"'
@@ -23,6 +25,11 @@ class ESFuctions
 		else
 			puts "Error 0001: print can only use a string or array"
 		end
+	end
+	
+	def var(var)
+		nameandobj = var.split(" = ")
+		$vars.store(nameandobj.at(0), nameandobj.at(1))
 	end
 	
 	def cal(eq)
@@ -54,6 +61,8 @@ class EPICSCRIPT
 				ESFuctions.print(line.sub("print ", ""))
 			elsif line.split.at(0) == "cal"
 				ESFuctions.cal(line.sub("cal ", ""))
+			elsif line.split.at(0) == "var"
+				ESFuctions.var(line.sub("var ", "")))
 			end
 		end
 	end
