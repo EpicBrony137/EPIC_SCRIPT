@@ -1,3 +1,15 @@
+def objid(thing)
+	if thing.chars.first == '"'
+		if thing.chars.last == '"'
+			return "string"
+		end
+	elsif thing.chars.first == '['
+		if thing.chars.last == ']'
+			return "array"
+		end
+	elsif thing.chars.first == # regex to see if it starts with a-z or A-Z
+end
+
 class ESFuctions
 	
 	def print(object)
