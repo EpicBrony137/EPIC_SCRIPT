@@ -49,7 +49,11 @@ class ESFuctions
 	
 	def var(var)
 		nameandobj = var.split(" = ")
-		$vars.store(nameandobj.at(0), nameandobj.at(1))
+		if objid(nameandobj.at(1)) == "variable"
+			$vars.store(nameandobj.at(0), $vars[nameandobj.at(1)])
+		else
+			$vars.store(nameandobj.at(0), nameandobj.at(1))
+		end
 	end
 	
 	def cal(eq)
