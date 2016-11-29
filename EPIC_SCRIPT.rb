@@ -1,3 +1,19 @@
+def objid(thing)
+	if thing.chars.first == '"'
+		if thing.chars.last == '"'
+			return "string"
+		end
+	elsif thing.chars.first == '['
+		if thing.chars.last == ']'
+			return "array"
+		end
+	elsif vars.has_key?(thing) == True
+		return "variable"
+	else 
+		return "error 0002: Varible not found or not an object"
+	end
+end
+
 class ESFuctions
 	
 	def print(object)
