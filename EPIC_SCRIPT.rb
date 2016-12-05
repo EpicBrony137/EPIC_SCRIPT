@@ -55,20 +55,18 @@ class ESFuctions
 			$vars.store(nameandobj.at(0), nameandobj.at(1))
 		end
 	end
-	
-	=begin
-	def cal(eq)
-		# NOT TESTED
-		expresa = eq.split(/[+\-*/]/)
-		expresb = eq.split(/[^+\-*/]/)
-		expresd = Array.new
-		for c in 0..(expresa.length - 1)
-			expresd.push(expresa.at(i) + " " + expresb.at(i) + " ")
-		end
-		# ONLY SPITS OUT THE EQUASHION, NOT THE AWNSER YET, MIGHT HAVE TO USE eval()
-		puts expresd.join("")
-	end
-	=end
+
+#	def cal(eq)
+#		# NOT TESTED
+#		expresa = eq.split(/[+\-*/]/)
+#		expresb = eq.split(/[^+\-*/]/)
+#		expresd = Array.new
+#		for c in 0..(expresa.length - 1)
+#			expresd.push(expresa.at(i) + " " + expresb.at(i) + " ")
+#		end
+#		# ONLY SPITS OUT THE EQUASHION, NOT THE AWNSER YET, MIGHT HAVE TO USE eval()
+#		puts expresd.join("")
+#	end
 	
 end
 
