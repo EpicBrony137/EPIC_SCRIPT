@@ -56,6 +56,7 @@ class ESFuctions
 		end
 	end
 	
+	=begin
 	def cal(eq)
 		# NOT TESTED
 		expresa = eq.split(/[+\-*/]/)
@@ -67,6 +68,7 @@ class ESFuctions
 		# ONLY SPITS OUT THE EQUASHION, NOT THE AWNSER YET, MIGHT HAVE TO USE eval()
 		puts expresd.join("")
 	end
+	=end
 	
 end
 
