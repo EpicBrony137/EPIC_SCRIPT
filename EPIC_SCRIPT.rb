@@ -1,5 +1,17 @@
 $vars = Hash.new
 
+class ESfile
+	
+	def initialize(name)
+		@file = File.open(name, "a+")
+	end
+	
+	def write(string)
+		@file.write(string)
+	end
+	
+end
+
 def objid(thing)
 	# NOT TESTED
 	if thing.chars.first == '"'
@@ -66,6 +78,10 @@ class ESFuctions
 		end
 		# ONLY SPITS OUT THE EQUASHION, NOT THE AWNSER YET, MIGHT HAVE TO USE eval()
 		puts expresd.join("")
+	end
+
+	def fileopen(file)
+		#some inputable name thing = ESfile.open(file)
 	end
 	
 end
