@@ -83,8 +83,10 @@ class EPICSCRIPT
 			line = filea.at(i)
 			if line.split.at(0) == "print"
 				ESFuctions.print(line.sub("print ", ""))
+=begin
 			elsif line.split.at(0) == "cal"
 				ESFuctions.cal(line.sub("cal ", ""))
+=end
 			elsif line.split.at(0) == "var"
 				ESFuctions.var(line.sub("var ", ""))
 			end
