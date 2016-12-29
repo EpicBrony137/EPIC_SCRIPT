@@ -77,18 +77,19 @@ class EPICSCRIPT
 	end
 
 	def exe
+		esf = ESFuctions.new
 		file = File.open(@filename, "a+")
 		filea = IO.readlines file
 		for i in 0..(filea.length - 1)
 			line = filea.at(i)
 			if line.split.at(0) == "print"
-				ESFuctions.print(line.sub("print ", ""))
+				esf.print(line.sub("print ", ""))
 =begin
 			elsif line.split.at(0) == "cal"
-				ESFuctions.cal(line.sub("cal ", ""))
+				esf.cal(line.sub("cal ", ""))
 =end
 			elsif line.split.at(0) == "var"
-				ESFuctions.var(line.sub("var ", ""))
+				esf.var(line.sub("var ", ""))
 			end
 		end
 	end
