@@ -12,13 +12,13 @@ def objid(thing)
 		end
 	elsif $vars.has_key?(thing) == True
 		return "variable"
-	else 
+	else
 		return "Error 0001: Varible not found or not an object"
 	end
 end
 
 class ESFuctions
-	
+
 	def print(object)
 		# NOT TESTED
 		if objid(object) == "string"
@@ -46,7 +46,7 @@ class ESFuctions
 			end
 		end
 	end
-	
+
 	def var(var)
 		nameandobj = var.split(" = ")
 		if objid(nameandobj.at(1)) == "variable"
@@ -67,15 +67,15 @@ class ESFuctions
 #		# ONLY SPITS OUT THE EQUASHION, NOT THE AWNSER YET, MIGHT HAVE TO USE eval()
 #		puts expresd.join("")
 #	end
-	
+
 end
 
 class EPICSCRIPT
-	
+
 	def initialize(filename)
 		@filename = filename
 	end
-	
+
 	def exe
 		file = File.open(@filename, "a+")
 		filea = IO.readlines file
@@ -86,10 +86,9 @@ class EPICSCRIPT
 			elsif line.split.at(0) == "cal"
 				ESFuctions.cal(line.sub("cal ", ""))
 			elsif line.split.at(0) == "var"
-				ESFuctions.var(line.sub("var ", "")))
+				ESFuctions.var(line.sub("var ", ""))
 			end
 		end
 	end
-	
-end
 
+end
